@@ -1,0 +1,107 @@
+[versions]
+accompanistPermissions = "0.34.0"
+activityKtx = "1.9.0"
+androidGradlePlugin = "8.2.0"
+coil = "2.6.0"
+composeBom = "2024.06.00"
+coreKtx = "1.13.1"
+datastorePreferences = "1.1.1"
+espresso = "3.5.1"
+firebaseBom = "33.1.0"
+firebaseCrashlytics = "3.0.1"
+firebasePerf = "1.4.2"
+googleServices = "4.4.2"
+junit = "4.13.2"
+koin = "3.5.3"
+kotlin = "2.0.0"
+kotlinxCoroutines = "1.8.1"
+kotlinxSerialization = "1.7.0"
+ksp = "2.0.0-1.0.22"
+ktor = "2.3.11"
+lifecycle = "2.8.2"
+lottie = "6.4.0"
+navigationCompose = "2.8.0-beta03"
+okhttpBom = "4.12.0"
+room = "2.6.1"
+splashscreen = "1.0.1"
+supabase = "2.5.0"
+testExtJunit = "1.1.5"
+uiTooling = "1.6.8"
+
+[libraries]
+# Android
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashscreen" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+
+# Kotlin
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinxCoroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+symbol-processing-api = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
+
+# Ktor
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
+# OkHttp
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp" }
+okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "okhttpBom" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor" }
+
+# Room
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+
+# Permission
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
+
+# Compose
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+
+# Firebase
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }
+firebase-perf = { group = "com.google.firebase", name = "firebase-perf" }
+firebase-storage = { group = "com.google.firebase", name = "firebase-storage" }
+
+# Miscellaneous
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
+
+# Supabase
+supabase-bom = { group = "io.github.jan-tennert.supabase", name = "bom", version.ref = "supabase" }
+supabase-postgrest = { group = "io.github.jan-tennert.supabase", name = "postgrest-kt" }
+
+# Test
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "testExtJunit" }
+espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+junit = { module = "junit:junit", version.ref = "junit" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "uiTooling" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlytics" }
+firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "firebasePerf" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

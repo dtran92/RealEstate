@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Real Estate</string>
+    <string name="label_home">Home</string>
+    <string name="label_search">Search</string>
+    <string name="featured_unit">Featured Unit</string>
+    <string name="find_your_home">Find Your Dream Home with Our Real Estate</string>
+    <string name="find_your_home_description">\\nWe have a wide selection of properties to choose from, and our expert agents will guide you every step of the way.</string>
+    <string name="get_started">Get Started</string>
+</resources>
