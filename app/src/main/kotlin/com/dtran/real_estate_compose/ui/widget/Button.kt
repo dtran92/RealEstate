@@ -22,6 +22,7 @@ fun AppButton(
     Button(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_item)),
+
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
         onClick = onButtonClick
     ) {

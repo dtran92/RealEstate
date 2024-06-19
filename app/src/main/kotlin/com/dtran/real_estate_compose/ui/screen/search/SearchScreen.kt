@@ -94,6 +94,7 @@ fun SearchScreen(navController: NavController, viewModel: SearchViewModel = koin
                 items(items = viewModel.propertyList.value, key = { item -> item.id }) { item ->
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_screen)),
+
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         SubcomposeAsyncImage(
