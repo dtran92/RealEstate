@@ -6,6 +6,7 @@ coil = "2.6.0"
 composeBom = "2024.06.00"
 coreKtx = "1.13.1"
 datastorePreferences = "1.1.1"
+desugar_jdk_libs = "2.0.4"
 espresso = "3.5.1"
 firebaseBom = "33.1.0"
 firebaseCrashlytics = "3.0.1"
@@ -39,6 +40,7 @@ androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtim
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 
 # Kotlin
+desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinxCoroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }

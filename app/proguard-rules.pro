@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#ktor logging
+-dontwarn org.slf4j.impl.StaticLoggerBinder
+
+#data models
+-keep class com.dtran.real_estate_compose.data.model.** {*;}
+-keep class com.dtran.real_estate_compose.navigation.** {*;}

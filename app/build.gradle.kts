@@ -1,3 +1,5 @@
+import java.time.LocalDate
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -17,13 +19,12 @@ android {
         applicationId = "com.dtran.real_estate_compose"
         minSdk = 29
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -33,15 +34,43 @@ android {
             isShrinkResources = false
         }
         release {
+            ndk {
+                abiFilters.add("arm64-v8a")
+                abiFilters.add("armeabi-v7a")
+            }
             isMinifyEnabled = true
             isDebuggable = false
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
+
+    applicationVariants.all {
+        this.outputs
+            .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
+            .forEach { output ->
+                output.outputFileName = "RealEstate_${this.versionName}_${LocalDate.now()}.apk"
+            }
+    }
+
+    flavorDimensions += "version"
+    productFlavors {
+        create("dev") {
+            applicationIdSuffix = ".dev"
+            versionCode = 1
+            versionName = "1.0.0"
+        }
+        create("prod") {
+            versionCode = 1
+            versionName = "1.0.0"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = "17"
@@ -124,6 +153,8 @@ dependencies {
 
     // datastore
     implementation(libs.androidx.datastore.preferences)
+
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
 
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling.preview)

@@ -101,7 +101,12 @@ fun SearchScreen(navController: NavController, viewModel: SearchViewModel = koin
                             model = item.imageUrl,
                             contentDescription = null,
                             contentScale = ContentScale.Crop,
-                            loading = { CircularProgressIndicator() },
+                            loading = {
+                                Box(
+                                    contentAlignment = Alignment.Center,
+                                    modifier = Modifier.fillMaxSize()
+                                ) { CircularProgressIndicator() }
+                            },
                             modifier = Modifier
                                 .size(125.dp)
                                 .clip(RoundedCornerShape(dimensionResource(id = R.dimen.radius_item)))
