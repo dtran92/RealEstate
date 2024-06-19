@@ -23,8 +23,8 @@ import coil.compose.SubcomposeAsyncImage
 import com.dtran.real_estate_compose.R
 import com.dtran.real_estate_compose.data.Response
 import com.dtran.real_estate_compose.ui.widget.AppBottomBar
-import com.dtran.real_estate_compose.ui.widget.AppProgressBar
 import com.dtran.real_estate_compose.ui.widget.AppSearchBar
+import com.dtran.real_estate_compose.ui.widget.LottieProgressBar
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -112,5 +112,5 @@ fun SearchScreen(navController: NavController, viewModel: SearchViewModel = koin
         }
     }
 
-    AppProgressBar(loading = isLoading.value)
+    LottieProgressBar(loading = isLoading.value)
 }

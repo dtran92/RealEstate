@@ -12,6 +12,7 @@ import com.dtran.real_estate_compose.data.local.DataStoreUtil
 import com.dtran.real_estate_compose.ui.screen.home.HomeScreen
 import com.dtran.real_estate_compose.ui.screen.search.SearchScreen
 import com.dtran.real_estate_compose.ui.screen.welcome.WelcomeScreen
+import com.dtran.real_estate_compose.util.navigateSafely
 import org.koin.compose.koinInject
 
 @SuppressLint("RestrictedApi")
