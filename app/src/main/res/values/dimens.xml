@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_screen">20dp</dimen>
+    <dimen name="margin_item">10dp</dimen>
+    <dimen name="radius_item">5dp</dimen>
+</resources>
