@@ -36,28 +36,6 @@ class HomeViewModel(
                 )
             })
         }
-    }.flowOn(Dispatchers.IO).stateIn(viewModelScope, started = SharingStarted.Lazily, initialValue = Response.Loading())
-
-    val topPropertyList = repository.getTopProperties().map {
-        when (it) {
-            is Response.Error -> Response.Error(error = it.error)
-            is Response.Loading -> Response.Loading()
-            is Response.Success -> Response.Success(data = it.data?.map { property ->
-                PropertyUiModel(
-                    id = property.id,
-                    price = property.price,
-                    featured = property.featured,
-                    description = property.description,
-                    address = property.address,
-                    name = property.name,
-                    imageUrl = property.imageUrl,
-                    type = property.type,
-                    area = property.area,
-                    city = property.city,
-                    country = property.country,
-                    rating = property.rating
-                )
-            })
-        }
-    }.flowOn(Dispatchers.IO).stateIn(viewModelScope, started = SharingStarted.Lazily, initialValue = Response.Loading())
+    }.flowOn(Dispatchers.IO)
+        .stateIn(viewModelScope, started = SharingStarted.WhileSubscribed(), initialValue = Response.Loading())
 }

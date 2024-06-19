@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -59,7 +60,12 @@ fun SearchScreen(navController: NavController, viewModel: SearchViewModel = koin
         Column(
             modifier = Modifier
                 .padding(it)
-                .padding(top = 20.dp, start = 20.dp, end = 20.dp, bottom = 0.dp)
+                .padding(
+                    top = dimensionResource(id = R.dimen.padding_screen),
+                    start = dimensionResource(id = R.dimen.padding_screen),
+                    end = dimensionResource(id = R.dimen.padding_screen),
+                    bottom = 0.dp
+                )
         ) {
             AppSearchBar(keyword = keyword.value, onKeywordChanged = { term -> keyword.value = term }, onSearch = {
                 coroutineScope.launch {
@@ -83,11 +89,11 @@ fun SearchScreen(navController: NavController, viewModel: SearchViewModel = koin
                     }
                 }
             })
-            Spacer(modifier = Modifier.height(10.dp))
-            LazyColumn(verticalArrangement = Arrangement.spacedBy(20.dp)) {
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_item)))
+            LazyColumn(verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_screen))) {
                 items(items = viewModel.propertyList.value, key = { item -> item.id }) { item ->
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(20.dp),
+                        horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_screen)),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         SubcomposeAsyncImage(
@@ -97,7 +103,7 @@ fun SearchScreen(navController: NavController, viewModel: SearchViewModel = koin
                             loading = { CircularProgressIndicator() },
                             modifier = Modifier
                                 .size(125.dp)
-                                .clip(RoundedCornerShape(15.dp))
+                                .clip(RoundedCornerShape(dimensionResource(id = R.dimen.radius_item)))
                         )
                         Column {
                             Text(text = item.name ?: "", fontWeight = FontWeight.Bold)

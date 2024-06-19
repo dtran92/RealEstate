@@ -9,8 +9,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.dtran.real_estate_compose.R
 
 @Composable
 fun AppButton(
@@ -20,7 +21,7 @@ fun AppButton(
 ) {
     Button(
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(5.dp),
+        shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_item)),
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
         onClick = onButtonClick
     ) {
@@ -36,7 +37,7 @@ fun AppButtonDark(
 ) {
     Button(
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(5.dp),
+        shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_item)),
         colors = ButtonDefaults.buttonColors(containerColor = Color.White),
         onClick = onButtonClick
     ) {

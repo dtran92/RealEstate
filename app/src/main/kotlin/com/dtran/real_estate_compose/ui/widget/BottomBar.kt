@@ -8,9 +8,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -25,7 +25,12 @@ fun AppBottomBar(
 ) {
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.secondaryContainer,
-        modifier = Modifier.clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+        modifier = Modifier.clip(
+            RoundedCornerShape(
+                topStart = dimensionResource(id = R.dimen.padding_screen),
+                topEnd = dimensionResource(id = R.dimen.padding_screen)
+            )
+        )
     ) {
         val currentMainRoute = navController.currentBottomBarItemAsState()
         BottomBarItem.entries.forEach { screen ->

@@ -12,7 +12,9 @@ import androidx.compose.material3.SearchBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
+import com.dtran.real_estate_compose.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,7 +29,7 @@ fun AppSearchBar(
             keyboardController?.hide()
             onSearch(keyword)
         },
-        shape = RoundedCornerShape(5.dp),
+        shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_item)),
         active = false,
         onActiveChange = {},
         trailingIcon = {
@@ -47,7 +49,7 @@ fun AppSearchBar(
 //        TextField(
 //            value = keyword,
 //            onValueChange = onKeywordChanged,
-//            shape = RoundedCornerShape(5.dp),
+//            shape = RoundedCornerShape(dimensionResource(id = R.dimen.radius_item)),
 //            colors = TextFieldDefaults.colors(
 //                focusedIndicatorColor = Color.Transparent,
 //                disabledIndicatorColor = Color.Transparent,

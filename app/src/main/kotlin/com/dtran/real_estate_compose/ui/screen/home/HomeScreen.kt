@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -41,7 +42,12 @@ fun HomeScreen(
     ) {
         Column(
             modifier = Modifier
-                .padding(top = 20.dp, start = 20.dp, end = 20.dp, bottom = 0.dp)
+                .padding(
+                    top = dimensionResource(id = R.dimen.padding_screen),
+                    start = dimensionResource(id = R.dimen.padding_screen),
+                    end = dimensionResource(id = R.dimen.padding_screen),
+                    bottom = 0.dp
+                )
                 .padding(it)
         ) {
             Text(stringResource(id = R.string.featured_unit), fontSize = 20.sp, fontWeight = FontWeight.Bold)
@@ -61,13 +67,13 @@ fun HomeScreen(
                             this.data?.let {
                                 LazyVerticalGrid(
                                     columns = GridCells.Adaptive(150.dp),
-                                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                                    horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.margin_item)),
                                 ) {
                                     items(items = it, key = { item -> item.id }) { item ->
                                         Card(
                                             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
                                             elevation = CardDefaults.cardElevation(4.dp),
-                                            modifier = Modifier.padding(vertical = 10.dp)
+                                            modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.margin_item))
                                         ) {
                                             SubcomposeAsyncImage(
                                                 model = item.imageUrl,
