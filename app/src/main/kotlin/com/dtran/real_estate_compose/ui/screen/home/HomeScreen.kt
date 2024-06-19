@@ -25,7 +25,7 @@ import coil.compose.SubcomposeAsyncImage
 import com.dtran.real_estate_compose.R
 import com.dtran.real_estate_compose.data.Response
 import com.dtran.real_estate_compose.ui.widget.AppBottomBar
-import com.dtran.real_estate_compose.ui.widget.AppProgressBar
+import com.dtran.real_estate_compose.ui.widget.LottieProgressBar
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -71,7 +71,16 @@ fun HomeScreen(
                                         ) {
                                             SubcomposeAsyncImage(
                                                 model = item.imageUrl,
-                                                loading = { CircularProgressIndicator(strokeCap = StrokeCap.Round) },
+                                                loading = {
+                                                    Box(
+                                                        contentAlignment = Alignment.Center,
+                                                        modifier = Modifier.fillMaxSize()
+                                                    ) {
+                                                        CircularProgressIndicator(
+                                                            strokeCap = StrokeCap.Round
+                                                        )
+                                                    }
+                                                },
                                                 contentDescription = null,
                                                 contentScale = ContentScale.FillWidth,
                                                 modifier = Modifier.height(100.dp)
@@ -94,7 +103,7 @@ fun HomeScreen(
 
         }
     }
-    AppProgressBar(
+    LottieProgressBar(
         loading = isLoading.value
     )
 }

@@ -17,24 +17,26 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import com.dtran.real_estate_compose.R
 import com.dtran.real_estate_compose.navigation.MainRoute
 import com.dtran.real_estate_compose.navigation.Screen
+import com.dtran.real_estate_compose.util.navigateSafely
 
 @Composable
 fun AppBottomBar(
     navController: NavController
 ) {
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.secondaryContainer, modifier = Modifier.clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+        modifier = Modifier.clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
     ) {
         val currentMainRoute = navController.currentBottomBarItemAsState()
         BottomBarItem.entries.forEach { screen ->
             val isTabSelected = screen == currentMainRoute.value
             NavigationBarItem(isTabSelected, onClick = {
-                navController.navigate(screen.route) {
+                navController.navigateSafely(screen.route) {
                     popUpTo(navController.graph.findStartDestination().id) {
                         inclusive = false
-                        saveState = false
+                        saveState = true
                     }
-                    restoreState = false
+                    restoreState = true
                     launchSingleTop = true
                 }
             }, icon = {
