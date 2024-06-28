@@ -50,7 +50,8 @@ android {
         this.outputs
             .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
             .forEach { output ->
-                output.outputFileName = "RealEstate_${this.versionName}_${LocalDate.now()}.apk"
+                output.outputFileName =
+                    "RealEstate_${this.productFlavors.first().name}_${this.versionName}_${LocalDate.now()}.apk"
             }
     }
 

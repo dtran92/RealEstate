@@ -12,7 +12,6 @@ import com.dtran.real_estate_compose.data.local.DataStoreUtil
 import com.dtran.real_estate_compose.ui.screen.home.HomeScreen
 import com.dtran.real_estate_compose.ui.screen.search.SearchScreen
 import com.dtran.real_estate_compose.ui.screen.welcome.WelcomeScreen
-import com.dtran.real_estate_compose.util.navigateSafely
 import org.koin.compose.koinInject
 
 @SuppressLint("RestrictedApi")
@@ -24,7 +23,8 @@ fun Navigation(
     val firstLaunch = datastore.firstLaunch.collectAsStateWithLifecycle()
     NavHost(
         navController = navController,
-        startDestination = if (firstLaunch.value == false) MainRoute.HomeRoute else Screen.WelcomeScreen
+        startDestination = if (firstLaunch.value == false) MainRoute.HomeRoute else Screen.WelcomeScreen,
+        modifier = modifier
     ) {
         composable<Screen.WelcomeScreen> {
             WelcomeScreen {

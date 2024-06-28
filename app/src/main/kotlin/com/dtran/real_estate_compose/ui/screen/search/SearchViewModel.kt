@@ -3,13 +3,20 @@ package com.dtran.real_estate_compose.ui.screen.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dtran.real_estate_compose.data.Response
+import com.dtran.real_estate_compose.data.local.DataStoreUtil
 import com.dtran.real_estate_compose.data.network.RepositoryImpl
 import com.dtran.real_estate_compose.ui.model.PropertyUiModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
-class SearchViewModel(private val repository: RepositoryImpl) : ViewModel() {
+class SearchViewModel(private val repository: RepositoryImpl, private val dataStoreUtil: DataStoreUtil) : ViewModel() {
     private val _propertyList = MutableStateFlow<List<PropertyUiModel>>(emptyList())
-    val propertyList = _propertyList.asStateFlow()
+    private val _favouriteList = dataStoreUtil.favouriteList
+
+    val dataList = combine(_propertyList, _favouriteList) { propertyList, favouriteList ->
+        propertyList.map { elem -> if (elem.id !in favouriteList) elem else elem.copy(isFavourite = true) }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
     val initial = repository.getAllProperties().map {
         when (it) {
@@ -32,7 +39,8 @@ class SearchViewModel(private val repository: RepositoryImpl) : ViewModel() {
                 )
             })
         }
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), Response.Loading())
+    }
+
 
     fun updateData(data: List<PropertyUiModel>) {
         _propertyList.value = data
@@ -61,5 +69,17 @@ class SearchViewModel(private val repository: RepositoryImpl) : ViewModel() {
                 })
             }
         }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), Response.Loading())
+    }
+
+    fun addToFavourite(itemId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreUtil.saveToFavourite(itemId)
+        }
+    }
+
+    fun removeFromFavourite(itemId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreUtil.removeFromFavourite(itemId)
+        }
     }
 }

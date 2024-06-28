@@ -12,5 +12,6 @@ data class PropertyUiModel(
     val price: Long?,
     val area: Int?,
     val rating: Double?,
-    val featured: Boolean?
+    val featured: Boolean?,
+    val isFavourite: Boolean = false
 )
