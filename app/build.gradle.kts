@@ -61,10 +61,12 @@ android {
             applicationIdSuffix = ".dev"
             versionCode = 1
             versionName = "1.0.0"
+            resValue("string", "app_name", "Real Estate - Dev")
         }
         create("prod") {
             versionCode = 1
             versionName = "1.0.0"
+            resValue("string", "app_name", "Real Estate")
         }
     }
 
