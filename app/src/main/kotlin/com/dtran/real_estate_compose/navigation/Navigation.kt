@@ -1,6 +1,5 @@
 package com.dtran.real_estate_compose.navigation
 
-import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -14,7 +13,6 @@ import com.dtran.real_estate_compose.ui.screen.search.SearchScreen
 import com.dtran.real_estate_compose.ui.screen.welcome.WelcomeScreen
 import org.koin.compose.koinInject
 
-@SuppressLint("RestrictedApi")
 @Composable
 fun Navigation(
     navController: NavHostController, modifier: Modifier = Modifier,
@@ -23,7 +21,7 @@ fun Navigation(
     val firstLaunch = datastore.firstLaunch.collectAsStateWithLifecycle()
     NavHost(
         navController = navController,
-        startDestination = if (firstLaunch.value == false) MainRoute.HomeRoute else Screen.WelcomeScreen,
+        startDestination = if (firstLaunch.value == false) Screen.HomeScreen else Screen.WelcomeScreen,
         modifier = modifier
     ) {
         composable<Screen.WelcomeScreen> {
@@ -31,17 +29,18 @@ fun Navigation(
                 navController.navigate(MainRoute.HomeRoute)
             }
         }
-        navigation(route = MainRoute.HomeRoute::class, startDestination = Screen.HomeScreen::class) {
+        navigation<MainRoute.HomeRoute>(startDestination = Screen.HomeScreen) {
             composable<Screen.HomeScreen> {
                 HomeScreen(
                     navController = navController
                 )
             }
         }
-        navigation(route = MainRoute.SearchRoute::class, startDestination = Screen.SearchScreen::class) {
+        navigation<MainRoute.SearchRoute>(startDestination = Screen.SearchScreen) {
             composable<Screen.SearchScreen> {
                 SearchScreen(navController = navController)
             }
         }
+
     }
 }
